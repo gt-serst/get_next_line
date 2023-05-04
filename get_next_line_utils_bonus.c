@@ -6,7 +6,7 @@
 /*   By: gt-serst <gt-serst@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 14:37:21 by gt-serst          #+#    #+#             */
-/*   Updated: 2023/01/10 12:04:35 by gt-serst         ###   ########.fr       */
+/*   Updated: 2023/05/04 19:11:28 by gt-serst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,22 +24,21 @@ size_t	ft_strlen(char *s)
 	return (tmp);
 }
 
-int	ft_strchr(char *s, int c)
+int	ft_get_nl(char *s, int c)
 {
-	int	i;
+	int		tmp;
+	char	chr;
 
-	i = 0;
 	if (!s)
 		return (0);
-	if (c == 0)
+	tmp = 0;
+	chr = (char)c;
+	while (s[tmp] != '\0' && s[tmp] != c)
+		tmp++;
+	if (s[tmp] == c)
+		return (++tmp);
+	else
 		return (0);
-	while (s[i] != '\0')
-	{
-		if ((unsigned char)s[i] == (unsigned char)c)
-			return (i + 1);
-		i++;
-	}
-	return (0);
 }
 
 char	*ft_strdup(const char *s1)

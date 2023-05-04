@@ -6,7 +6,7 @@
 /*   By: gt-serst <gt-serst@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 14:36:57 by gt-serst          #+#    #+#             */
-/*   Updated: 2023/01/24 11:45:01 by gt-serst         ###   ########.fr       */
+/*   Updated: 2023/05/04 19:10:05 by gt-serst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static char	*ft_get_bytes(int fd, char *stack)
 	if (!buf)
 		return (NULL);
 	len = 1;
-	while (!ft_strchr(stack, '\n') && len > 0)
+	while (!ft_get_nl(stack, '\n') && len > 0)
 	{
 		len = read(fd, buf, BUFFER_SIZE);
 		if (len == -1)
@@ -46,9 +46,9 @@ static char	*ft_get_line(char *stack)
 	if (!line)
 		return (NULL);
 	line[0] = '\0';
-	if (ft_strchr(stack, '\n'))
+	if (ft_get_nl(stack, '\n'))
 	{
-		substr = ft_substr(stack, 0, ft_strchr(stack, '\n'));
+		substr = ft_substr(stack, 0, ft_get_nl(stack, '\n'));
 		free(line);
 		line = substr;
 	}
@@ -61,9 +61,9 @@ static char	*ft_get_stack(char *stack)
 {
 	char	*substr;
 
-	if (ft_strchr(stack, '\n'))
+	if (ft_get_nl(stack, '\n'))
 	{
-		substr = ft_substr(stack, ft_strchr(stack, '\n'),
+		substr = ft_substr(stack, ft_get_nl(stack, '\n'),
 				ft_strlen(stack));
 		free(stack);
 		stack = substr;
