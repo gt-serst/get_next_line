@@ -31,9 +31,9 @@ int	ft_strchr_mod(char *s, int c)
 		return (0);
 	tmp = 0;
 	chr = (char)c;
-	while (s[tmp] != '\0' && s[tmp] != c)
+	while (s[tmp] != '\0' && s[tmp] != chr)
 		tmp++;
-	if (s[tmp] == c)
+	if (s[tmp] == chr)
 		return (++tmp);
 	else
 		return (0);

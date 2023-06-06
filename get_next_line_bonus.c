@@ -102,7 +102,7 @@ int	main(void)
 	char	*content;
 	char	*name;
 
-	name = "text.txt";
+	name = "txt.txt";
 	fd = open(name, O_RDONLY);
 	content = get_next_line(fd);
 	printf("New line in main: %s\n", content);
