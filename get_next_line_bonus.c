@@ -6,13 +6,13 @@
 /*   By: gt-serst <gt-serst@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 14:36:57 by gt-serst          #+#    #+#             */
-/*   Updated: 2023/06/06 17:49:35 by gt-serst         ###   ########.fr       */
+/*   Updated: 2023/06/07 10:13:28 by gt-serst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line_bonus.h"
 
-static char	*ft_get_bytes(int fd, char *stack)
+static char	*get_bytes(int fd, char *stack)
 {
 	int		len;
 	char	*buf;
@@ -21,7 +21,7 @@ static char	*ft_get_bytes(int fd, char *stack)
 	if (!buf)
 		return (NULL);
 	len = 1;
-	while (!ft_strchr_mod(stack, '\n') && len > 0)
+	while (!strchr_mod(stack, '\n') && len > 0)
 	{
 		len = read(fd, buf, BUFFER_SIZE);
 		if (len == -1)
@@ -31,13 +31,13 @@ static char	*ft_get_bytes(int fd, char *stack)
 			return (NULL);
 		}
 		buf[len] = '\0';
-		stack = ft_strjoin_mod(stack, buf);
+		stack = strjoin_mod(stack, buf);
 	}
 	free(buf);
 	return (stack);
 }
 
-static char	*ft_get_line(char *stack)
+static char	*get_line(char *stack)
 {
 	char	*line;
 	char	*substr;
@@ -46,24 +46,24 @@ static char	*ft_get_line(char *stack)
 	if (!line)
 		return (NULL);
 	line[0] = '\0';
-	if (ft_strchr_mod(stack, '\n'))
+	if (strchr_mod(stack, '\n'))
 	{
-		substr = ft_substr(stack, 0, ft_strchr_mod(stack, '\n'));
+		substr = ft_substr(stack, 0, strchr_mod(stack, '\n'));
 		free(line);
 		line = substr;
 	}
 	else
-		line = ft_strjoin_mod(line, stack);
+		line = strjoin_mod(line, stack);
 	return (line);
 }
 
-static char	*ft_get_stack(char *stack)
+static char	*get_stack(char *stack)
 {
 	char	*substr;
 
-	if (ft_strchr_mod(stack, '\n'))
+	if (strchr_mod(stack, '\n'))
 	{
-		substr = ft_substr(stack, ft_strchr_mod(stack, '\n'),
+		substr = ft_substr(stack, strchr_mod(stack, '\n'),
 				ft_strlen(stack));
 		free(stack);
 		stack = substr;
@@ -83,14 +83,14 @@ char	*get_next_line(int fd)
 
 	if (fd < 0 || BUFFER_SIZE < 1)
 		return (NULL);
-	stack[fd] = ft_get_bytes(fd, stack[fd]);
+	stack[fd] = get_bytes(fd, stack[fd]);
 	if (!stack[fd])
 		return (NULL);
 	if (stack[fd][0] == '\0')
 		line = NULL;
 	else
-		line = ft_get_line(stack[fd]);
-	stack[fd] = ft_get_stack(stack[fd]);
+		line = get_line(stack[fd]);
+	stack[fd] = get_stack(stack[fd]);
 	return (line);
 }
 

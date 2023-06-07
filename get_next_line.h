@@ -6,7 +6,7 @@
 /*   By: gt-serst <gt-serst@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 12:27:34 by gt-serst          #+#    #+#             */
-/*   Updated: 2023/05/04 19:28:45 by gt-serst         ###   ########.fr       */
+/*   Updated: 2023/06/07 10:10:36 by gt-serst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@
 
 char	*get_next_line(int fd);
 size_t	ft_strlen(char *s);
-int		ft_strchr_mod(char *s, int c);
+int		strchr_mod(char *s, int c);
 char	*ft_strdup(const char *s1);
 char	*ft_substr(char *s, unsigned int start, int len);
-char	*ft_strjoin_mod(char *s1, char *s2);
+char	*strjoin_mod(char *s1, char *s2);
 
 #endif
