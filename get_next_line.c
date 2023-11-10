@@ -6,7 +6,7 @@
 /*   By: gt-serst <gt-serst@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 15:56:37 by gt-serst          #+#    #+#             */
-/*   Updated: 2023/06/07 10:13:38 by gt-serst         ###   ########.fr       */
+/*   Updated: 2023/11/10 10:50:48 by gt-serst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,6 +112,7 @@ int	main(void)
 		free(content);
 		i++;
 	}
+	system("leaks a.out");
 	return (0);
 }
 */
